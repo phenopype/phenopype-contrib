@@ -1,13 +1,12 @@
-import mlutils as utils
+from phenomorph import utils
 from phenopype.utils_lowlevel import _load_yaml
 from phenopype import show_image, load_image
 import dlib
-import numpy as np
 from cv2 import circle
 import os
 
 
-class morph:
+class Model:
     def __init__(self, rootdir):
         self.rootdir = os.path.abspath(rootdir)
         self.imagedir = os.path.join(self.rootdir, "images")
