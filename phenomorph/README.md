@@ -1,6 +1,6 @@
 # Phenomorph
 
-Phenomorph represents the integration of [phenopype](https://www.phenopype.org/) and [ml-morph](https://github.com/agporto/ml-morph)
+Phenomorph represents the integration of [phenopype](https://www.phenopype.org/) and [ml-morph](https://github.com/agporto/ml-morph). Detailed documentation to be uploaded soon.
 
 When using phenomorph, please cite:
 
