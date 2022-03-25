@@ -1,4 +1,4 @@
-from phenomorph import utils
+from phenopype.contrib.phenomorph import utils
 from phenopype.utils_lowlevel import _load_yaml
 from phenopype import show_image, load_image
 import dlib

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import re
 
 ## read and format version from file
-VERSIONFILE = "_version.py"
+VERSIONFILE = r"phenopype/contrib/phenodeep/_version.py"
 verstrline = open(VERSIONFILE, "rt").read()
 VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
 mo = re.search(VSRE, verstrline, re.M)
@@ -10,32 +10,28 @@ if mo:
     verstr = mo.group(1)
 else:
     raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE,))
-    
+
 ## setup
 setup(
-    name="phenopype-contrib",
-    url="https://www.phenopype.org",
-    maintainer="Moritz Lürig",
-    maintainer_email="moritz.luerig@gmail.com",
-    author="Arthur Porto; Moritz Lürig",
-    author_email="agporto@gmail.com; moritz.luerig@gmail.com",
+    name="phenodeep",
     # packages=find_packages(),
-    # not sure these are needed:
+    ## not sure these are needed:
     packages=[
-        "phenopype",
-        "phenopype.contrib"
-    ],
+        "phenodeep", 
+        "phenopype.contrib.phenodeep"
+        ],
     package_dir={
-        "phenopype": r"phenomorph\phenopype",
-        "phenopype.contrib": "phenomorph\phenopype\contrib"
-    },
+        "phenodeep": "phenopype/contrib/phenodeep",
+        "phenopype.contrib.phenodeep": "phenopype/contrib/phenodeep"
+        },
     # namespace_packages=['phenopype'],
     install_requires=[
         "phenopype>=3.*",
-        # "phenomorph"
-        f"phenomorph @ file://localhost/{os.getcwd()}\phenomorph"
+        "tensorflow==2.6.0",
+        "keras==2.6.0",
     ],
     version=verstr,
     license="LGPL",
     description="A mlmorph module for phenopype",
-) 
+)
+
