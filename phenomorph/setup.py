@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 import re
 
 ## read and format version from file
@@ -17,8 +17,8 @@ setup(
     url="https://www.phenopype.org",
     author="Arthur Porto",
     author_email="agporto@gmail.com",
-    packages=["phenomorph"],
-    package_dir={"phenomorph": "phenomorph"},
+    packages=find_packages(),
+    # package_dir={"phenomorph": "phenomorph"},
     install_requires=[
         "phenopype",
         "dlib"
@@ -26,4 +26,9 @@ setup(
     version=verstr,
     license="LGPL",
     description="A mlmorph module for phenopype",
+    entry_points={
+        'phenopype.plugins':[
+            'phenomorph = phenomorph',
+            ],
+    }
 )
