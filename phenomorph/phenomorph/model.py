@@ -1,6 +1,6 @@
 from phenomorph import utils
-from phenopype.utils_lowlevel import _load_yaml
-from phenopype import show_image, load_image
+from phenopype import utils_lowlevel
+from phenopype import utils as pp_utils 
 import dlib
 from cv2 import circle
 import os
@@ -40,7 +40,7 @@ class Model:
             )
 
     def load_config(self, cfgpath):
-        cfg = _load_yaml(cfgpath)
+        cfg = utils_lowlevel._load_yaml(cfgpath)
         options = dlib.shape_predictor_training_options()
         options.num_trees_per_cascade_level = cfg["train"]["num_trees"]
         options.nu = cfg["train"]["regularization"]
@@ -104,7 +104,7 @@ class Model:
             predictor_path
         ), f"Cannot find shape prediction model at {predictor_path}"
         assert os.path.exists(img_path), "No image found at {image_path}"
-        img = load_image(img_path)
+        img = pp_utils.load_image(img_path)
         rect = dlib.rectangle(
             left=1, top=1, right=img.shape[1] - 1, bottom=img.shape[0] - 1
         )
@@ -114,7 +114,7 @@ class Model:
         for item, i in enumerate(sorted(num_parts, key=str)):
             x, y = shape.part(item).x, shape.part(item).y
             circle(img, (x, y), int(img.shape[0] / 50), (0, 0, 255), -1)
-        show_image(img)
+        pp_utils.show_image(img)
 
 
 #  create function to get error per landmark

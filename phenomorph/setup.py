@@ -20,8 +20,8 @@ setup(
     packages=find_packages(),
     # package_dir={"phenomorph": "phenomorph"},
     install_requires=[
-        "phenopype",
-        "dlib"
+        "phenopype>=3.*",
+        "dlib@https://github.com/phenopype/phenopype-dependencies/blob/main/wheels/dlib-19.23.99-cp37-cp37m-win_amd64.whl?raw=true",
     ],
     version=verstr,
     license="LGPL",
