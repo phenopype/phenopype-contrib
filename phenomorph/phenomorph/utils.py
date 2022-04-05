@@ -50,14 +50,15 @@ def split_train_test(input, percentage = 0.8):
         sizes (dict): dictionary containing the image dimensions in the 'train' and 'test' directories.
     '''
     # Listing the filenames.Folders must contain only image files (extension can vary).Hidden files are ignored
-    filenames = input['im']
-    # Splitting the images into 'train' and 'test' directories (80/20 split)
     random.seed(845)
-    filenames.sort()
-    random.shuffle(filenames)
-    split = int(percentage * len(filenames))
-    train_set = {'im':input['im'][:split], 'coords':input['coords'][:split]}
-    test_set = {'im':input['im'][split:], 'coords':input['coords'][split:]}
+    length = len(input['im'])
+    l = list(range(length))
+    random.shuffle(l)
+    split = int(percentage * length)
+    train_list = l[:split]
+    test_list = l[split:]
+    train_set = {'im': [input['im'][l] for l in train_list], 'coords': [input['coords'][l] for l in train_list]}
+    test_set = {'im': [input['im'][l] for l in test_list], 'coords': [input['coords'][l] for l in test_list]}
     return train_set, test_set
 
 def add_part_element(bbox,num):
