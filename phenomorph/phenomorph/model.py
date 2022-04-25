@@ -74,7 +74,7 @@ class Model:
         else:
             dlib.train_shape_predictor(train_xml, predictor_path, self.options)
             error = dlib.test_shape_predictor(train_xml, predictor_path)
-            print(f"Training error (average pixel deviation): {error}")
+            print(f"Training error (average pixel deviation): {error}") 
 
     def test_model(self, tag):
         predictor_path = os.path.join(self.modeldir, f"predictor_{tag}.dat")

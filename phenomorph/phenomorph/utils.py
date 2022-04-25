@@ -100,10 +100,14 @@ def add_bbox_element(bbox,imgtuple):
     '''
     
     box = ET.Element('box')
-    height = imgtuple[0] - 2
-    width = imgtuple[1] - 2
-    top = 1
-    left = 1
+    
+    if len(imgtuple) == 2:
+        height = imgtuple[0] - 2
+        width = imgtuple[1] - 2
+        top = 1
+        left = 1
+    elif len(imgtuple) == 4:
+        left, top, width, height = imgtuple
 
     box.set('top', str(int(top)))
     box.set('left', str(int(left)))
